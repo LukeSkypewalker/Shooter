@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f39be6f6ff86eb42bb441ed72000da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLifeTime: 2
 --- !u!135 &135000010224601012
 SphereCollider:
   m_ObjectHideFlags: 1

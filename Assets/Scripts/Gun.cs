@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Gun : MonoBehaviour {
+public class Gun : MonoBehaviour
+{
 
     public GameObject bulletPrefub;
     public Transform bulletSpawn;
@@ -14,11 +15,11 @@ public class Gun : MonoBehaviour {
     {
         GameObject bullet = (GameObject)Instantiate(bulletPrefub, bulletSpawn.position, bulletSpawn.rotation);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
-        lastShotTimeStamp = Time.time ;
+        lastShotTimeStamp = Time.time;
     }
 
     public bool isReadyToShoot()
     {
-        return (Time.time >= lastShotTimeStamp + coolDown );
+        return (Time.time >= lastShotTimeStamp + coolDown);
     }
 }
