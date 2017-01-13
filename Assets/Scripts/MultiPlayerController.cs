@@ -19,7 +19,6 @@ public class MultiPlayerController : MonoBehaviour{
 	    transform.Translate(0, 0, forwardMove);
 
 	    float isFired = Input.GetAxis("Fire1_p" + playerNumber);
-        Debug.Log(isFired);
         if (isFired>0 && gun.isReadyToShoot())
             gun.Fire();
     }
