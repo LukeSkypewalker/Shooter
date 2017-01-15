@@ -11,13 +11,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, bulletLifeTime);
     }
 
-    void OnCollisionEnter(Collision other
-        )
+    void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Shootable")
+        if (other.gameObject.GetComponent<Health>())
         {
             other.gameObject.GetComponent<Health>().TakeDamage(damage);
-
         }
         Destroy(gameObject);
     }

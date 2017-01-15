@@ -1,20 +1,34 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.Networking;
 
 public class EnemySpawner : MonoBehaviour
 {
-
     public GameObject enemyPrefab;
-    public int numberOfEnemies; 
+    public float spawnCoolDown = 3f;
+    public int numberOfEnemies;
+    private float lastSpawnTimeStamp = 0;
+
 
     void Start()
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-8f, 8f), 0f, Random.Range(-8f, 8f));
-            Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f,180f), 0f);
-            GameObject enemy = (GameObject) Instantiate(enemyPrefab, spawnPosition, spawnRotation);      
+            SpawnEnemy();
         }
+    }
+
+    void Update()
+    {
+        if (Time.time >= lastSpawnTimeStamp + spawnCoolDown)
+        {
+            SpawnEnemy();
+        }
+    }
+
+    void SpawnEnemy()
+    {
+        Vector3 spawnPosition = new Vector3(Random.Range(-19f, 19f), 0f, Random.Range(-19f, 19f));
+        Quaternion spawnRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        GameObject enemy = (GameObject)Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+        lastSpawnTimeStamp = Time.time;
     }
 }

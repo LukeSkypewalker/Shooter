@@ -2,12 +2,19 @@
 
 public class Health : MonoBehaviour
 {
-    public const int maxHealth = 100;
-    public int health = maxHealth;
+    public int maxHealth = 100;
     public RectTransform healthBar;
+    public RectTransform maxHealthBar;
     public bool destroyOnDeath;
-    Vector3 spawnPoint = Vector3.zero;
 
+    private int health;
+
+    void Start()
+    {
+        health = maxHealth;
+        maxHealthBar.sizeDelta = new Vector2(health*2, maxHealthBar.sizeDelta.y);
+        healthBar.sizeDelta = new Vector2(health*2, healthBar.sizeDelta.y);
+    }
 
     public void TakeDamage(int amount)
     {
@@ -19,13 +26,8 @@ public class Health : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else
-            {
-                health = maxHealth;
-                transform.position =  new Vector3(Random.Range(-8f, 8f), 0f, Random.Range(-8f, 8f));
-            }
         }
 
-        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
+        healthBar.sizeDelta = new Vector2(health*2, healthBar.sizeDelta.y);
     }
 }
